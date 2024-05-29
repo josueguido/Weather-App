@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import SunsetIcon from "../assets/Icons/sunset.svg"
 import PrecipitationIcon from "../assets/Icons/droplet.svg"
@@ -7,9 +7,13 @@ import HumidityIcon from "../assets/Icons/ripple.svg"
 import FeelIcon from "../assets/Icons/temperature.svg"
 import VisibilityIcon from "../assets/Icons/eye.svg"
 import WindIcon from "../assets/Icons/wind.svg"
+import MoonIcon from "../assets/Icons/moon.svg"
+import SunIcon from "../assets/Icons/sun.svg"
 import { BackgroundGradient } from '../Components/ui/background-gradient';
 
+
 function CityDetail() {
+
     const { cityName } = useParams();
     const [weatherData, setWeatherData] = useState(null);
     const [error, setError] = useState(null);
@@ -38,41 +42,72 @@ function CityDetail() {
         fetchWeatherData();
     }, [cityName]);
 
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    if (!weatherData || !weatherData.forecast || !weatherData.forecast.forecastday) {
+        return <p>Loading data...</p>;
+    }
+
+    const hours = weatherData.forecast.forecastday[0]?.hour || [];
+
+    const nextSlide = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % hours.length);
+    };
+
+    const prevSlide = () => {
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + hours.length) % hours.length);
+    };
+
+    const getVisibleSlides = () => {
+        const start = currentIndex;
+        const end = start + 5;
+        return hours.slice(start, end);
+    };
+
+    const visibleSlides = getVisibleSlides();
+
     return (
         <>
-            <nav></nav>
-
             <article className='flex flex-col justify-center items-center text-center py-10 gap-10'>
                 {error && <p className="text-red-500">{error}</p>}
                 {weatherData && (
                     <>
-                        <section className='flex flex-col gap-2'>
-                            <h2 className=' font-medium text-lg'>{weatherData.location.name}, {weatherData.location.country}</h2>
-                            <p className='font-medium  text-xl'> {weatherData.current.temp_c}°C</p>
-                            <p className=' font-medium'>{weatherData.current.condition.text}</p>
-                            <div className='flex flex-row justify-center gap-2 font-medium'>
-                                <p>H: {weatherData.forecast.forecastday[0].day.maxtemp_c}°</p>
-                                <p>L: {weatherData.forecast.forecastday[0].day.mintemp_c}°</p>
-                            </div>
-                            <p className=' font-medium'>{weatherData.location.localtime}</p>
+                        <header className='flex justify-start items-start text-start text-black'>
+                            <Link to="/" >Back</Link>
+                        </header>
 
-                        </section>
+                        <main>
+                            <section className='flex flex-col relative max-w-[32rem] items-center justify-center overflow-hidden rounded-lg border bg-background p-8 md:shadow-xl'>
+                                <div className='flex flex-col gap-4 text-center font-bold leading-none tracking-tighter bg-gradient-to-b from-[#ffd319] via-[#ff2975] to-[#8c1eff] bg-clip-text text-transparent pointer-events-none z-10 whitespace-pre-wrap'>
+                                    <h2 className='text-lg font-medium'>{weatherData.location.name}, {weatherData.location.country}</h2>
+                                    <div className='flex flex-row justify-center gap-4 text-lg font-medium'>
+                                        <p>H: {weatherData.forecast.forecastday[0].day.maxtemp_c}°C</p>
+                                        <p>L: {weatherData.forecast.forecastday[0].day.mintemp_c}°C</p>
+                                    </div>
+                                    <p className='text-2xl'>{weatherData.current.temp_c}°C</p>
+                                    <p className='text-lg'>{weatherData.current.condition.text}</p>
+                                    <p className='text-md'>{weatherData.location.localtime}</p>
+                                </div>
+                            </section>
+                        </main>
+
 
                         <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 py-10'>
                             <section>
                                 <BackgroundGradient className="flex flex-col justify-start items-start gap-2 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
-                                    <header className='flex flex-row gap-x-2'>
-                                        <img src={SunsetIcon} alt='sunset icon' />
-                                        <h1>SUNSET</h1>
+                                    <header className='flex flex-row gap-x-2 items-center'>
+                                        <img src={SunsetIcon} alt='Sunset icon' />
+                                        <h1 className="text-lg font-semibold">Sunrise</h1>
                                     </header>
                                     <div>
-                                        <p>{weatherData.forecast.forecastday[0].astro.sunset}</p>
+                                        <p>{weatherData.forecast.forecastday[0].astro.sunrise}</p>
                                     </div>
                                     <div>
-                                        <p>Sunrise: {weatherData.forecast.forecastday[0].astro.sunrise}</p>
+                                        <p className="text-base">Sunset: {weatherData.forecast.forecastday[0].astro.sunset}</p>
                                     </div>
                                 </BackgroundGradient>
                             </section>
+
 
                             <section>
                                 <BackgroundGradient className="flex flex-col justify-start items-start gap-2 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
@@ -132,7 +167,7 @@ function CityDetail() {
                             <section>
                                 <BackgroundGradient className="flex flex-col justify-start items-start gap-2 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
                                     <header className='flex flex-row gap-x-2'>
-                                        <img src={VisibilityIcon} alt='visibility icon' />
+                                        <img src={SunIcon} alt='visibility icon' />
                                         <h1>UV INDEX</h1>
                                     </header>
                                     <div>
@@ -170,9 +205,9 @@ function CityDetail() {
 
 
                             <section>
-                                <BackgroundGradient className="flex flex-col justify-start items-start gap-2 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
+                                <BackgroundGradient className="flex flex-col justify-start items-start text-start gap-2 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
                                     <header className='flex flex-row gap-x-2'>
-                                        <img src={VisibilityIcon} alt='visibility icon' />
+                                        <img src={MoonIcon} alt='visibility icon' />
                                         <h1>{weatherData.forecast.forecastday[0].astro.moon_phase}</h1>
                                     </header>
                                     <div >
@@ -184,6 +219,39 @@ function CityDetail() {
                                 </BackgroundGradient>
                             </section>
                         </div>
+
+
+                        <section className='flex flex-col items-center bg-light-sky-blue rounded-lg'>
+                            <h1 className='text-xl font-bold mb-4 text-gold'>Forecast</h1>
+                            <div className='relative w-full flex items-center justify-between px-8'>
+                                <button
+                                    onClick={prevSlide}
+                                    className='z-10 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 mx-2 text-dark-gray'
+                                >
+                                    &#10094;
+                                </button>
+                                <div className='flex overflow-hidden w-full justify-center'>
+                                    {visibleSlides.map((hourData, index) => (
+                                        <div
+                                            key={index}
+                                            className='flex flex-col items-center justify-center p-4 bg-white bg-opacity-20 rounded-2xl m-2 text-center'
+                                            style={{ backdropFilter: 'blur(10px)', minWidth: '100px' }}
+                                        >
+                                            <p className='text-lg font-semibold text-dark-blue'>{hourData.time.split(' ')[1]}</p>
+                                            <p className='text-2xl font-bold text-gold'>{hourData.temp_c}°C</p>
+                                            <img src={hourData.condition.icon} alt="Weather icon" className='w-12 h-12' />
+                                            <p className='text-sm text-slate-gray'>{hourData.condition.text}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                                <button
+                                    onClick={nextSlide}
+                                    className='z-10 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 mx-2 text-dark-gray'
+                                >
+                                    &#10095;
+                                </button>
+                            </div>
+                        </section>
                     </>
                 )}
             </article>
@@ -192,3 +260,6 @@ function CityDetail() {
 }
 
 export default CityDetail;
+
+
+
