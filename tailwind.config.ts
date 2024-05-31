@@ -17,6 +17,8 @@ module.exports = {
         extend: {
             colors: {
                 'light-sky-blue': '#87CEEB',
+                'Steel Blue': '#4682B4',
+                'Light-Sky-Blue-2': ' #B0E2FF',
                 'gold': '#FFD700',
                 'light-gray': '#D3D3D3',
                 'dark-gray': '#A9A9A9',
@@ -27,7 +29,7 @@ module.exports = {
                 'slate-blue': '#6A5ACD',
                 'midnight-blue': '#191970',
                 'dark-slate-gray': '#2F4F4F',
-              },
+            },
             animation: {
                 grid: "grid 15s linear infinite",
             },
@@ -37,7 +39,7 @@ module.exports = {
                     "100%": { transform: "translateY(0)" },
                 },
             },
-            
+
         },
     },
     plugins: [addVariablesForColors],
