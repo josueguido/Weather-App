@@ -12,7 +12,6 @@ import SunIcon from "../assets/Icons/sun.svg"
 import BackIcon from "../assets/Icons/back.svg"
 
 
-
 function CityDetail() {
 
     const { cityName } = useParams();
@@ -73,7 +72,7 @@ function CityDetail() {
 
             <nav className='flex justify-start items-start text-start text-black px-10 py-10 bg-light-sky-blue'>
                 <Link to="/" >
-                    <img src={BackIcon} className=' h-10'/>
+                    <img src={BackIcon} className=' h-10' />
                 </Link>
             </nav>
 
@@ -98,149 +97,150 @@ function CityDetail() {
                 {weatherData && (
                     <>
                         <main className='grid grid-cols-1 sm:grid-cols-2 gap-4 py-10'>
-                            <section className="flex flex-col justify-start items-start gap-2 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
+                            <section className="flex flex-col justify-start items-start gap-2 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900 shadow-lg transition-all duration-300">
                                 <header className='flex flex-row gap-x-2 items-center'>
-                                    <img src={SunsetIcon} alt='Sunset icon' />
-                                    <h1 className="text-lg  font-semibold">Sunrise</h1>
+                                    <img src={SunsetIcon} alt='Sunset icon' className="w-8 h-8" />
+                                    <h1 className="text-lg font-semibold text-gray-800 dark:text-gray-100">Sunrise</h1>
                                 </header>
                                 <div>
-                                    <p>{weatherData.forecast.forecastday[0].astro.sunrise}</p>
+                                    <p className="text-gray-600 dark:text-gray-300">{weatherData.forecast.forecastday[0].astro.sunrise}</p>
                                 </div>
                                 <div>
-                                    <p className="text-base">Sunset: {weatherData.forecast.forecastday[0].astro.sunset}</p>
+                                    <p className="text-base text-gray-600 dark:text-gray-300">Sunset: {weatherData.forecast.forecastday[0].astro.sunset}</p>
                                 </div>
                             </section>
 
 
-                            <section className="flex flex-col justify-start items-start gap-2 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
-                                <header className='flex flex-row gap-x-2'>
-                                    <img src={PrecipitationIcon} alt='sunset icon' />
-                                    <h1 >PRECIPITATION</h1>
+                            <section className="flex flex-col justify-start items-start gap-2 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900 shadow-lg transition-all duration-300">
+                                <header className='flex flex-row gap-x-2 items-center'>
+                                    <img src={PrecipitationIcon} alt='precipitation icon' className="w-8 h-8" />
+                                    <h1 className="text-lg font-semibold text-gray-800 dark:text-gray-100">PRECIPITATION</h1>
                                 </header>
                                 <div className='flex flex-col justify-start items-start'>
-                                    <p>{weatherData.forecast.forecastday[0].hour[0].precip_mm} mm</p>
-                                    <h3>in last 24h</h3>
+                                    <p className="text-2xl font-bold text-gray-800 dark:text-gray-100">{weatherData.forecast.forecastday[0].hour[0].precip_mm} mm</p>
+                                    <h3 className="text-base text-gray-600 dark:text-gray-300">in last 24h</h3>
                                 </div>
                             </section>
 
-                            <section className="flex flex-col justify-start items-start gap-2 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
-                                <header className='flex flex-row gap-x-2'>
-                                    <img src={HumidityIcon} alt='sunset icon' />
-                                    <h1>HUMIDITY</h1>
+                            <section className="flex flex-col justify-start items-start gap-4 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900 shadow-lg transition-all duration-300">
+                                <header className='flex flex-row gap-x-2 items-center'>
+                                    <img src={HumidityIcon} alt='humidity icon' className="w-8 h-8" />
+                                    <h1 className="text-lg font-semibold text-gray-800 dark:text-gray-100">HUMIDITY</h1>
                                 </header>
-                                <div className='flex flex-col gap-4 justify-center items-start'>
-                                    <p>Change of rain: {weatherData.forecast.forecastday[0].hour[0].chance_of_rain}%</p>
-                                    <p>Change of snow: {weatherData.forecast.forecastday[0].hour[0].chance_of_snow}%</p>
-                                    <p>Max Humidity: {weatherData.forecast.forecastday[0].day.avghumidity}%</p>
+                                <div className='flex flex-col gap-2 justify-center items-start'>
+                                    <p className="text-base text-gray-800 dark:text-gray-100">Chance of rain: {weatherData.forecast.forecastday[0].hour[0].chance_of_rain}%</p>
+                                    <p className="text-base text-gray-800 dark:text-gray-100">Chance of snow: {weatherData.forecast.forecastday[0].hour[0].chance_of_snow}%</p>
+                                    <p className="text-base text-gray-800 dark:text-gray-100">Max Humidity: {weatherData.forecast.forecastday[0].day.avghumidity}%</p>
                                 </div>
                             </section>
 
-                            <section className="flex flex-col justify-start items-start gap-2 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
-                                <header className='flex flex-row gap-x-2'>
-                                    <img src={FeelIcon} alt='sunset icon' />
-                                    <h1>FEELS LIKE</h1>
+                            <section className="flex flex-col justify-start items-start gap-4 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900 shadow-lg transition-all duration-300">
+                                <header className='flex flex-row gap-x-2 items-center'>
+                                    <img src={FeelIcon} alt='feels like icon' className="w-8 h-8" />
+                                    <h1 className="text-lg font-semibold text-gray-800 dark:text-gray-100">FEELS LIKE</h1>
                                 </header>
-                                <div className='flex flex-col gap-2 justify-center items-start '>
-                                    <p>C° {weatherData.forecast.forecastday[0].hour[0].feelslike_c}</p>
-                                    <p>F° {weatherData.forecast.forecastday[0].hour[0].feelslike_f}</p>
+                                <div className='flex flex-col gap-2 justify-center items-start'>
+                                    <p className="text-base text-gray-800 dark:text-gray-100">C° {weatherData.forecast.forecastday[0].hour[0].feelslike_c}</p>
+                                    <p className="text-base text-gray-800 dark:text-gray-100">F° {weatherData.forecast.forecastday[0].hour[0].feelslike_f}</p>
                                 </div>
-                                <p>{weatherData.forecast.forecastday[0].hour[0].condition.text}</p>
-
+                                <p className="text-sm text-gray-600 dark:text-gray-300">{weatherData.forecast.forecastday[0].hour[0].condition.text}</p>
                             </section>
 
-                            <section className="flex flex-col justify-start items-start gap-2 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
-                                <header className='flex flex-row gap-x-2'>
-                                    <img src={VisibilityIcon} alt='visibility icon' />
-                                    <h1>VISIBILITY</h1>
+                            <section className="flex flex-col justify-start items-start gap-4 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900 shadow-lg transition-all duration-300">
+                                <header className='flex flex-row gap-x-2 items-center'>
+                                    <img src={VisibilityIcon} alt='visibility icon' className="w-8 h-8" />
+                                    <h1 className="text-lg font-semibold text-gray-800 dark:text-gray-100">VISIBILITY</h1>
+                                </header>
+                                <div className='flex flex-col gap-2'>
+                                    <p className="text-base text-gray-800 dark:text-gray-100">{weatherData.forecast.forecastday[0].hour[0].vis_km} KM</p>
+                                    <p className="text-base text-gray-800 dark:text-gray-100">{weatherData.forecast.forecastday[0].hour[0].vis_miles} Miles</p>
+                                </div>
+                            </section>
+
+                            <section className="flex flex-col justify-start items-start gap-4 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900 shadow-lg transition-all duration-300">
+                                <header className='flex flex-row gap-x-2 items-center'>
+                                    <img src={SunIcon} alt='sun icon' className="w-8 h-8" />
+                                    <h1 className="text-lg font-semibold text-gray-800 dark:text-gray-100">UV INDEX</h1>
                                 </header>
                                 <div>
-                                    <p>{weatherData.forecast.forecastday[0].hour[0].vis_km} KM</p>
-                                    <p>{weatherData.forecast.forecastday[0].hour[0].vis_miles} MH</p>
+                                    <p className="text-base text-gray-800 dark:text-gray-100">{weatherData.forecast.forecastday[0].hour[0].uv}</p>
                                 </div>
+                                <p className="text-sm text-gray-600 dark:text-gray-300">The UV index measures the strength of the sun`s ultraviolet radiation. Higher values indicate greater potential for damage to your skin and eyes.</p>
                             </section>
 
-                            <section className="flex flex-col justify-start items-start gap-2 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
-                                <header className='flex flex-row gap-x-2'>
-                                    <img src={SunIcon} alt='visibility icon' />
-                                    <h1>UV INDEX</h1>
+                            <section className="flex flex-col justify-start items-start gap-4 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900 shadow-lg transition-all duration-300">
+                                <header className='flex flex-row gap-x-2 items-center'>
+                                    <img src={WindIcon} alt='wind icon' className="w-8 h-8" />
+                                    <h1 className="text-lg font-semibold text-gray-800 dark:text-gray-100">WIND</h1>
                                 </header>
-                                <div>
-                                    <p>{weatherData.forecast.forecastday[0].hour[0].uv}</p>
-                                </div>
-                            </section>
-
-                            <section className="flex flex-col justify-start items-start gap-2 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
-                                <header className='flex flex-row gap-x-2'>
-                                    <img src={WindIcon} alt='visibility icon' />
-                                    <h1>WIND</h1>
-                                </header>
-
-                                <div className='flex flex-row items-start gap-x-2 text-sm'>
-                                    <p className='text-4xl'>{weatherData.forecast.forecastday[0].hour[0].wind_kph}</p>
+                                <div className='flex flex-row  gap-x-4 text-sm'>
                                     <div>
-                                        <h2> KM/H</h2>
-                                        <h3>Wind</h3>
+                                        <p className='text-4xl text-gray-800 dark:text-gray-100'>{weatherData.forecast.forecastday[0].hour[0].wind_kph}</p>
+                                        <h2 className="text-base text-gray-600 dark:text-gray-300">KM/H</h2>
+                                        <h3 className="text-base font-semibold text-gray-800 dark:text-gray-100">Wind Speed</h3>
+                                    </div>
+                                    <div>
+                                        <p className='text-4xl text-gray-800 dark:text-gray-100'>{weatherData.forecast.forecastday[0].hour[0].gust_kph}</p>
+                                        <h2 className="text-base text-gray-600 dark:text-gray-300">KM/H</h2>
+                                        <h3 className="text-base font-semibold text-gray-800 dark:text-gray-100">Gusts</h3>
                                     </div>
                                 </div>
-
                                 <hr className="w-full border-t border-gray-500" />
-
-                                <div className='flex flex-row items-start gap-x-2 text-sm'>
-                                    <p className='text-4xl'>{weatherData.forecast.forecastday[0].hour[0].gust_kph}</p>
-                                    <div>
-                                        <h2> KM/H</h2>
-                                        <h3>Gusts</h3>
-                                    </div>
-                                </div>
+                                <p className="text-sm text-gray-600 dark:text-gray-300">Wind speed refers to the average speed of the wind over a given period of time, while gusts are sudden increases in wind speed that occur for short durations. Both are important factors to consider when assessing weather conditions and their potential impact.</p>
                             </section>
 
 
-                            <section className="flex flex-col justify-start items-start text-start gap-2 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
-                                <header className='flex flex-row gap-x-2'>
-                                    <img src={MoonIcon} alt='visibility icon' />
-                                    <h1>{weatherData.forecast.forecastday[0].astro.moon_phase}</h1>
+                            <section className="flex flex-col justify-start items-start gap-4 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900 shadow-lg transition-all duration-300">
+                                <header className='flex flex-row gap-x-2 items-center'>
+                                    <img src={MoonIcon} alt='moon icon' className="w-8 h-8" />
+                                    <h1 className="text-lg font-semibold text-gray-800 dark:text-gray-100">{weatherData.forecast.forecastday[0].astro.moon_phase}</h1>
                                 </header>
-                                <div >
-                                    <p>Illumination {weatherData.forecast.forecastday[0].astro.moon_illumination}%</p>
+                                <div className="flex flex-col justify-start  items-start text-sm text-gray-800 dark:text-gray-100">
+                                    <p>Illumination: {weatherData.forecast.forecastday[0].astro.moon_illumination}%</p>
                                     <p>Next Moonrise: {weatherData.forecast.forecastday[0].astro.moonrise}</p>
                                     <p>Next Moonset: {weatherData.forecast.forecastday[0].astro.moonset}</p>
                                     <p>Is Sun Up: {weatherData.forecast.forecastday[0].astro.is_sun_up ? 'Yes' : 'No'}</p>
                                 </div>
+                                <hr className="w-full border-t border-gray-500" />
+                                <p className="text-sm text-gray-600 dark:text-gray-300">The moon phase indicates the fraction of the moon`s disk that is illuminated. It is an important factor in determining tides and has cultural significance in many societies.</p>
                             </section>
                         </main>
 
 
-                        <section className='flex flex-col items-center  bg-Light-Sky-Blue-2 rounded-lg py-8'>
-                            <h1 className='text-xl font-bold mb-4 text-gold'>Forecast</h1>
-                            <div className='relative w-full flex items-center justify-between px-8'>
+                        <section className='flex flex-col items-center bg-Light-Sky-Blue-2 rounded-lg py-4 md:py-8'>
+                            <h1 className='text-xl font-bold mb-2 md:mb-4 text-gold'>Forecast</h1>
+                            <div className='relative w-full flex items-center justify-between px-2 md:px-8'>
                                 <button
                                     onClick={prevSlide}
-                                    className='z-10 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 mx-2 text-dark-gray'
+                                    className='z-10 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 mx-1 md:mx-2 text-dark-gray'
                                 >
                                     &#10094;
                                 </button>
-                                <div className='flex overflow-hidden w-full justify-center'>
+                                <div className='flex overflow-x-auto max-w-full justify-between'>
                                     {visibleSlides.map((hourData, index) => (
                                         <div
                                             key={index}
-                                            className='flex flex-col items-center justify-center p-4 bg-white bg-opacity-20 rounded-2xl m-2 text-center'
-                                            style={{ backdropFilter: 'blur(10px)', minWidth: '100px' }}
+                                            className='flex flex-col items-center justify-center p-2 md:p-4 bg-white bg-opacity-20 rounded-2xl m-1 md:m-2 text-center'
+                                            style={{ backdropFilter: 'blur(10px)', minWidth: '60px', maxWidth: '40%' }}
                                         >
-                                            <p className='text-lg font-semibold text-dark-blue'>{hourData.time.split(' ')[1]}</p>
-                                            <p className='text-2xl font-bold text-gold'>{hourData.temp_c}°C</p>
-                                            <img src={hourData.condition.icon} alt="Weather icon" className='w-12 h-12' />
-                                            <p className='text-sm text-slate-gray'>{hourData.condition.text}</p>
+                                            <p className='text-base md:text-lg font-semibold text-dark-blue'>{hourData.time.split(' ')[1]}</p>
+                                            <p className='text-lg md:text-2xl font-bold text-gold'>{hourData.temp_c}°C</p>
+                                            <img src={hourData.condition.icon} alt="Weather icon" className='w-10 md:w-12 h-10 md:h-12' />
+                                            <p className='text-xs md:text-sm text-slate-gray'>{hourData.condition.text}</p>
                                         </div>
                                     ))}
                                 </div>
                                 <button
                                     onClick={nextSlide}
-                                    className='z-10 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 mx-2 text-dark-gray'
+                                    className='z-10 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 mx-1 md:mx-2 text-dark-gray'
                                 >
                                     &#10095;
                                 </button>
                             </div>
                         </section>
+
+
+
                     </>
                 )}
             </article>
