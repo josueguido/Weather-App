@@ -60,7 +60,7 @@ function CityDetail() {
 
     const getVisibleSlides = () => {
         const start = currentIndex;
-        const end = start + 5;
+        const end = start + 4;
         return hours.slice(start, end);
     };
 
@@ -70,13 +70,13 @@ function CityDetail() {
         <>
 
 
-            <nav className='flex justify-start items-start text-start text-black px-10 py-10 bg-light-sky-blue'>
+            <nav className='flex justify-start items-start text-start text-black px-10 py-10 bg-white'>
                 <Link to="/" >
                     <img src={BackIcon} className=' h-10' />
                 </Link>
             </nav>
 
-            <header className='flex justify-center px-10 py-10  bg-light-sky-blue'>
+            <header className='flex justify-center px-10 py-10  bg-white'>
                 <section className='flex flex-col relative  items-center justify-center overflow-hidden rounded-lg border bg-background p-8 md:shadow-xl bg-white'>
                     <div className='flex flex-col gap-4 text-center font-bold leading-none tracking-tighter bg-gradient-to-b from-[#ffd319] via-[#ff2975] to-[#8c1eff] bg-clip-text text-transparent pointer-events-none z-10 whitespace-pre-wrap'>
                         <h2 className='text-lg font-medium'>{weatherData.location.name}, {weatherData.location.country}</h2>
@@ -92,12 +92,12 @@ function CityDetail() {
             </header>
 
 
-            <article className='flex flex-col justify-center items-center text-center py-10 gap-10 bg-l bg-light-sky-blue  dark:bg-gray-900 shadow-lg'>
+            <article className='flex flex-col justify-center items-center text-center py-10 gap-10 bg-l bg-white  dark:bg-gray-900 shadow-lg'>
                 {error && <p className="text-red-500">{error}</p>}
                 {weatherData && (
                     <>
                         <main className='grid grid-cols-1 sm:grid-cols-2 gap-4 py-10'>
-                            <section className="flex flex-col justify-start items-start gap-2 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900 shadow-lg transition-all duration-300">
+                            <section className="flex flex-col justify-start items-start gap-2 rounded-[22px] max-w-sm p-4 sm:p-10 bg-gray-200 dark:bg-zinc-900 shadow-lg transition-all duration-300">
                                 <header className='flex flex-row gap-x-2 items-center'>
                                     <img src={SunsetIcon} alt='Sunset icon' className="w-8 h-8" />
                                     <h1 className="text-lg font-semibold text-gray-800 dark:text-gray-100">Sunrise</h1>
@@ -111,7 +111,7 @@ function CityDetail() {
                             </section>
 
 
-                            <section className="flex flex-col justify-start items-start gap-2 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900 shadow-lg transition-all duration-300">
+                            <section className="flex flex-col justify-start items-start gap-2 rounded-[22px] max-w-sm p-4 sm:p-10 bg-gray-200 dark:bg-zinc-900 shadow-lg transition-all duration-300">
                                 <header className='flex flex-row gap-x-2 items-center'>
                                     <img src={PrecipitationIcon} alt='precipitation icon' className="w-8 h-8" />
                                     <h1 className="text-lg font-semibold text-gray-800 dark:text-gray-100">PRECIPITATION</h1>
@@ -122,7 +122,7 @@ function CityDetail() {
                                 </div>
                             </section>
 
-                            <section className="flex flex-col justify-start items-start gap-4 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900 shadow-lg transition-all duration-300">
+                            <section className="flex flex-col justify-start items-start gap-4 rounded-[22px] max-w-sm p-4 sm:p-10 bg-gray-200 dark:bg-zinc-900 shadow-lg transition-all duration-300">
                                 <header className='flex flex-row gap-x-2 items-center'>
                                     <img src={HumidityIcon} alt='humidity icon' className="w-8 h-8" />
                                     <h1 className="text-lg font-semibold text-gray-800 dark:text-gray-100">HUMIDITY</h1>
@@ -134,7 +134,7 @@ function CityDetail() {
                                 </div>
                             </section>
 
-                            <section className="flex flex-col justify-start items-start gap-4 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900 shadow-lg transition-all duration-300">
+                            <section className="flex flex-col justify-start items-start gap-4 rounded-[22px] max-w-sm p-4 sm:p-10 bg-gray-200 dark:bg-zinc-900 shadow-lg transition-all duration-300">
                                 <header className='flex flex-row gap-x-2 items-center'>
                                     <img src={FeelIcon} alt='feels like icon' className="w-8 h-8" />
                                     <h1 className="text-lg font-semibold text-gray-800 dark:text-gray-100">FEELS LIKE</h1>
@@ -146,7 +146,7 @@ function CityDetail() {
                                 <p className="text-sm text-gray-600 dark:text-gray-300">{weatherData.forecast.forecastday[0].hour[0].condition.text}</p>
                             </section>
 
-                            <section className="flex flex-col justify-start items-start gap-4 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900 shadow-lg transition-all duration-300">
+                            <section className="flex flex-col justify-start items-start gap-4 rounded-[22px] max-w-sm p-4 sm:p-10 bg-gray-200 dark:bg-zinc-900 shadow-lg transition-all duration-300">
                                 <header className='flex flex-row gap-x-2 items-center'>
                                     <img src={VisibilityIcon} alt='visibility icon' className="w-8 h-8" />
                                     <h1 className="text-lg font-semibold text-gray-800 dark:text-gray-100">VISIBILITY</h1>
@@ -157,7 +157,7 @@ function CityDetail() {
                                 </div>
                             </section>
 
-                            <section className="flex flex-col justify-start items-start gap-4 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900 shadow-lg transition-all duration-300">
+                            <section className="flex flex-col justify-start items-start gap-4 rounded-[22px] max-w-sm p-4 sm:p-10 bg-gray-200 dark:bg-zinc-900 shadow-lg transition-all duration-300">
                                 <header className='flex flex-row gap-x-2 items-center'>
                                     <img src={SunIcon} alt='sun icon' className="w-8 h-8" />
                                     <h1 className="text-lg font-semibold text-gray-800 dark:text-gray-100">UV INDEX</h1>
@@ -168,7 +168,7 @@ function CityDetail() {
                                 <p className="text-sm text-gray-600 dark:text-gray-300">The UV index measures the strength of the sun`s ultraviolet radiation. Higher values indicate greater potential for damage to your skin and eyes.</p>
                             </section>
 
-                            <section className="flex flex-col justify-start items-start gap-4 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900 shadow-lg transition-all duration-300">
+                            <section className="flex flex-col justify-start items-start gap-4 rounded-[22px] max-w-sm p-4 sm:p-10 bg-gray-200 dark:bg-zinc-900 shadow-lg transition-all duration-300">
                                 <header className='flex flex-row gap-x-2 items-center'>
                                     <img src={WindIcon} alt='wind icon' className="w-8 h-8" />
                                     <h1 className="text-lg font-semibold text-gray-800 dark:text-gray-100">WIND</h1>
@@ -190,7 +190,7 @@ function CityDetail() {
                             </section>
 
 
-                            <section className="flex flex-col justify-start items-start gap-4 rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900 shadow-lg transition-all duration-300">
+                            <section className="flex flex-col justify-start items-start gap-4 rounded-[22px] max-w-sm p-4 sm:p-10 bg-gray-200 dark:bg-zinc-900 shadow-lg transition-all duration-300">
                                 <header className='flex flex-row gap-x-2 items-center'>
                                     <img src={MoonIcon} alt='moon icon' className="w-8 h-8" />
                                     <h1 className="text-lg font-semibold text-gray-800 dark:text-gray-100">{weatherData.forecast.forecastday[0].astro.moon_phase}</h1>
@@ -208,7 +208,7 @@ function CityDetail() {
 
 
                         <section className='flex flex-col items-center bg-Light-Sky-Blue-2 rounded-lg py-4 md:py-8'>
-                            <h1 className='text-xl font-bold mb-2 md:mb-4 text-gold'>Forecast</h1>
+                            <h1 className='text-xl font-bold mb-2 md:mb-4 text-yellow-500'>Forecast</h1>
                             <div className='relative w-full flex items-center justify-between px-2 md:px-8'>
                                 <button
                                     onClick={prevSlide}
@@ -216,15 +216,15 @@ function CityDetail() {
                                 >
                                     &#10094;
                                 </button>
-                                <div className='flex overflow-x-auto max-w-full justify-between'>
+                                <div className='flex overflow-x-auto max-w-auto justify-between'>
                                     {visibleSlides.map((hourData, index) => (
                                         <div
                                             key={index}
                                             className='flex flex-col items-center justify-center p-2 md:p-4 bg-white bg-opacity-20 rounded-2xl m-1 md:m-2 text-center'
-                                            style={{ backdropFilter: 'blur(10px)', minWidth: '60px', maxWidth: '40%' }}
+                                            style={{ backdropFilter: 'blur(10px)', minWidth: '60px', maxWidth: '30%' }}
                                         >
                                             <p className='text-base md:text-lg font-semibold text-dark-blue'>{hourData.time.split(' ')[1]}</p>
-                                            <p className='text-lg md:text-2xl font-bold text-gold'>{hourData.temp_c}°C</p>
+                                            <p className='text-lg md:text-2xl font-bold text-dark-blue'>{hourData.temp_c}°C</p>
                                             <img src={hourData.condition.icon} alt="Weather icon" className='w-10 md:w-12 h-10 md:h-12' />
                                             <p className='text-xs md:text-sm text-slate-gray'>{hourData.condition.text}</p>
                                         </div>
